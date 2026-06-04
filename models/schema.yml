@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: gz_raw_data
+    description: Greenweez ham verileri
+    tables:
+      - name: sales
+        identifier: raw_gz_sales
+        description: Greenweez satış verileri
+        
+        # dbt 2.0 Güncellemesi: Tazelik ayarları artık config altına yazılıyor!
+        config:
+          loaded_at_field: "CAST(date_date AS TIMESTAMP)"
+          freshness:
+            warn_after: {count: 90, period: day}
+            
+        tests:
+          - unique:
+              column_name: "(orders_id || '_' || pdt_id)"
+          - not_null:
+              column_name: "(orders_id || '_' || pdt_id)"
+        columns:
+          - name: date_date
+            description: Satın alma tarihi
+
+      - name: product
+        identifier: raw_gz_product
+        description: Greenweez ürün bilgileri
+        columns:
+          - name: products_id
+            description: Ürünün benzersiz kimliği (Birincil Anahtar)
+            tests:
+              - unique
+              - not_null
+
+      - name: ship
+        identifier: raw_gz_ship
+        description: Greenweez kargo operasyonları verileri
+        columns:
+          - name: orders_id
+            description: Siparişin benzersiz kimliği (Birincil Anahtar)
+            tests:
+              - unique
+              - not_null
