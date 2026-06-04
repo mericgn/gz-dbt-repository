@@ -1,5 +1,11 @@
+{{ config(
+    materialized='table',
+    schema='finance'
+) }}
+
 with orders as (
-    select * from `deneme-498307`.`dbt_meric`.`int_orders_operational`
+    -- dbt'nin otomatik referans bulucu fonksiyonu eklendi:
+    select * from {{ ref('int_orders_operational') }}
 )
 
 select
