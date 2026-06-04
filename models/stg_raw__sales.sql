@@ -2,7 +2,7 @@ with
 source as (
     select * from `deneme-498307`.`gz_raw_data`.`raw_gz_sales`
 ),
-renamed as (
+renamed as ( 
     select
         date_date,
         orders_id,

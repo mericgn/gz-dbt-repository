@@ -18,7 +18,7 @@ select
     ROUND(SUM(shipping_fee), 2) as shipping_fee,
     -- Toplam Lojistik Maliyeti
     ROUND(SUM(log_cost), 2) as log_cost,
-    -- Satılan Toplam Ürün Miktarı
+    -- Satılan Toplam Ürün Miktarı 
     SUM(quantity) as quantity
 from orders
 group by date_date
