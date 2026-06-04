@@ -15,7 +15,7 @@ select
     orders_margin.purchase_cost,
     orders_margin.margin,
     ship.shipping_fee,
-    ship.log_cost,
+    ship.log_cost, 
     ship.ship_cost
 from orders_margin
 left join ship
