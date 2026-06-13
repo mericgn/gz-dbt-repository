@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: gz_raw_data
+    schema: gz_raw_data
+    tables:
+      - name: raw_gz_adwords
+      - name: raw_gz_bing
+      - name: raw_gz_criteo
+      - name: raw_gz_facebook
