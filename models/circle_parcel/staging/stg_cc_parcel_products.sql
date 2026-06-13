@@ -1,0 +1,1 @@
+SELECT * FROM {{ source('raw_data_circle', 'raw_cc_parcel_product') }}
